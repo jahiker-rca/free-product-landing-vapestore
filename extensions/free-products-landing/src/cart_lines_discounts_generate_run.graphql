@@ -1,0 +1,22 @@
+query CartInput {
+  cart {
+    lines {
+      id
+      quantity
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+      attribute(key: "_freeSample") {
+        ... on Attribute {
+          key
+          value
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+  }
+}
