@@ -27,12 +27,10 @@ export function cartLinesDiscountsGenerateRun(input) {
     return {operations: []};
   }
 
-  const maxCartLine = input.cart.lines.reduce((maxLine, line) => {
-    if (line.attribute.key === '_freeSample') {
-      return line;
-    }
-    return maxLine;
-  }, input.cart.lines[0]);
+  const maxCartLine = input.cart.lines.find((line) => line.attribute.key === '_freeSample');
+  if (!maxCartLine) {
+    throw new Error('No cart line with attribute _freeSample found');
+  }
 
   const operations = [];
 
