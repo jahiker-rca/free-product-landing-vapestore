@@ -1,6 +1,5 @@
 import {
   DiscountClass,
-  OrderDiscountSelectionStrategy,
   ProductDiscountSelectionStrategy,
 } from '../generated/api';
 
@@ -36,8 +35,6 @@ export function cartLinesDiscountsGenerateRun(input) {
   }, input.cart.lines[0]);
 
   const operations = [];
-
-  // console.log("maxCartLine", JSON.stringify(maxCartLine));
 
   if (hasProductDiscountClass) {
     operations.push({
